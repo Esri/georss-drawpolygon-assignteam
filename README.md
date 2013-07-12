@@ -2,7 +2,7 @@ OpsDashboard-GeoRSS_Draw_TeamAssignment
 ===============================================
 
 Add-in for Operations Dashboard for ArcGIS containing a GeoRSS widget, a draw polygon map tool and a team assignment feature action. Additional tools may be added inthe future.
-This addin is also available to you in ArcGIS Online at http://nitro.maps.arcgis.com/home/item.html?id=8f2d5c5632254c57b355f0296632b813. 
+This addin is also available to you in ArcGIS Online at http://www.arcgis.com/home/item.html?id=8f2d5c5632254c57b355f0296632b813. 
 
 ## Features
 
