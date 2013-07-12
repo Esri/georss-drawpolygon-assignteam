@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="OpsDashboardAddIns_MoreDemo.EarthquakeWidget"
+             x:Name="WidgetUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:client="http://schemas.esri.com/arcgis/client/2009"
+             xmlns:local="clr-namespace:OpsDashboardAddIns_MoreDemo"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <client:SimpleMarkerSymbol x:Key="EpicenterSymbol" Color="Red"  Style="Triangle" Size="12" />
+
+        <ObjectDataProvider x:Key="customers" ObjectType="{x:Type local:Feeds}"/>
+        <DataTemplate x:Key="LastNameFirst" DataType="WidgetUserControl.Feeds">
+            <StackPanel Margin="10 10 10 0" Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=LastName}" FontWeight="bold"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding Path=FirstName}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <XmlNamespaceMappingCollection x:Key="namespaces">
+            <XmlNamespaceMapping Uri="http://www.w3.org/2005/Atom" Prefix="d" />
+            <XmlNamespaceMapping Uri="http://purl.org/dc/elements/1.1/" Prefix="dc" />
+            <XmlNamespaceMapping Uri="http://www.georss.org/georss" Prefix="georss" />
+        </XmlNamespaceMappingCollection>
+
+        <XmlDataProvider x:Key="atomProvider" XmlNamespaceManager="{StaticResource namespaces}" 
+                     Source="http://earthquake.usgs.gov/earthquakes/feed/atom/1.0/hour" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.Resources>
+
+            <ObjectDataProvider x:Key="atomFeeds" ObjectType="{x:Type local:Feeds}"/>
+            <DataTemplate x:Key="JustDisplayName" DataType="EarthquakeAddin.Feed">
+                <TextBlock Text="{Binding Path=DisplayName}" FontWeight="bold"/>
+            </DataTemplate>
+
+        </Grid.Resources>
+
+        <DockPanel LastChildFill="True">
+            <Image Name="FeedImage" DockPanel.Dock="Top" Margin="5"
+             Source="http://earthquake.usgs.gov/template/images/usgs.jpg"
+             VerticalAlignment="Top" HorizontalAlignment="Center" Height="90" />
+
+            <TextBlock Name="RssTitle" DockPanel.Dock="Top" Margin="5"
+                 Text="{Binding Source={StaticResource atomProvider}, XPath=//d:feed//d:title }" 
+                 TextWrapping="Wrap" ></TextBlock>
+
+            <ListBox DockPanel.Dock="Top" ItemsSource="{Binding Source={StaticResource atomFeeds}}" SelectedIndex="0"
+                 ItemTemplate="{StaticResource JustDisplayName}" SelectionChanged="FeedListBox_SelectionChanged"/>
+        </DockPanel>
+
+    </Grid>
+</UserControl>
+  

@@ -1,0 +1,65 @@
+﻿<Window x:Class="OpsDashboardAddIns_MoreDemo.Config.EarthquakeWidgetDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:opsCenter="clr-namespace:ESRI.ArcGIS.OperationsDashboard;assembly=ESRI.ArcGIS.OperationsDashboard"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Width="400"
+        Height="350"
+        Title="Configure EarthquakeWidget Widget">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Title:"
+                 Margin="5" />
+            <TextBox x:Name="CaptionTextBox" 
+               Text="Recent Earthquakes"
+               Grid.Column="1"
+                Margin="5" />
+
+            <TextBlock Grid.Row="1" Text="MapWidget:" Style="{StaticResource SettingLabelStyle}" />
+            <ComboBox x:Name="MapWidgetCombo" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Caption" />
+
+        </Grid>
+
+        <Border Grid.Row="1">
+            <StackPanel VerticalAlignment="Bottom"
+                  Orientation="Horizontal"
+                  HorizontalAlignment="Right">
+                <Button x:Name="OKButton" MinWidth="65" Padding="5,0" Height="25" Margin="5,5,0,5" Click="OKButton_Click">OK
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedItem, ElementName=MapWidgetCombo}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button MinWidth="65" Padding="5,0" Height="25" Margin="5" Content="Cancel" IsCancel="True" />
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
+

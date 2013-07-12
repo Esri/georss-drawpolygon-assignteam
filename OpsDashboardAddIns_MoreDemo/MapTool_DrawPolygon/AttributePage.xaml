@@ -1,0 +1,23 @@
+﻿<Window x:Class="OpsDashboardAddIns_MoreDemo.MapTool_DrawPolygon.AttributePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:opsCenter="clr-namespace:ESRI.ArcGIS.OperationsDashboard;assembly=ESRI.ArcGIS.OperationsDashboard"        
+        WindowStartupLocation="CenterOwner"
+        Title="Search Area Attributes" Height="300" Width="300">
+   <Grid Background="{DynamicResource DialogBackgroundBrush}">
+      <Grid.RowDefinitions>
+         <RowDefinition Height="auto"/>
+         <RowDefinition Height="*"/>
+         <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Style="{StaticResource MediumTextBlockStyle}" Text="Specify the attributes:" Margin="2,2,2,2" />
+      <StackPanel Grid.Row="1" x:Name="AttributesPanel" Orientation="Vertical" Margin="10,2,0,2" />
+      <Border Grid.Row="2" Style="{StaticResource DialogFooterBorderStyle}">
+         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button x:Name="OKButton" MinWidth="65" Padding="5,0" Height="25" Margin="5,5,0,5" Content="OK" Click="OKButton_Click_1"/>
+
+            <Button MinWidth="65" Padding="5,0" Height="25" Margin="5" Content="Cancel" IsCancel="True" />
+         </StackPanel>
+      </Border>
+   </Grid>
+</Window>
