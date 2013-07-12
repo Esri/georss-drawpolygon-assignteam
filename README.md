@@ -74,7 +74,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
                                  
 A copy of the license is available in the repository's
-[license.txt](https://raw.github.com/esri/OpsDashboard-GeoRSS_Draw_TeamAssignment/master/license.txt) file.
+[license.txt](https://github.com/esri/georss-drawpolygon-asignteam/blob/master/license.txt) file.
                                                                   
 [](Esri Tags: User Conference)
 [](Esri Tags: 2013)
